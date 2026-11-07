@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Writing samples · Andrea D’Angelo</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Direction B · "The notebook", second pass. One calm scroll under a centred masthead:
+   hello, how I think, writing samples grouped by form, projects, questions, contact. */
+:root {
+  --bg: #eef2f0; --paper: #f9fbfa; --ink: #1f2b29; --muted: #5d6b67; --rule: #d3ddd9;
+  --accent: #3d6d67; --accent-soft: #dce9e5; --rose: #a85e66; --rose-soft: #f3e3e4;
+  --font: "Jost", Futura, "Century Gothic", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141917; --paper: #1b211f; --ink: #e5ece9; --muted: #9fb0aa; --rule: #2c3533;
+  --accent: #8cc2b9; --accent-soft: #1f2d2a; --rose: #e0a0a7; --rose-soft: #2e2123; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #141917; --paper: #1b211f; --ink: #e5ece9; --muted: #9fb0aa; --rule: #2c3533;
+  --accent: #8cc2b9; --accent-soft: #1f2d2a; --rose: #e0a0a7; --rose-soft: #2e2123; color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--bg); color: var(--ink); font: 400 1.08rem/1.65 var(--font);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 3rem; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: var(--accent); text-underline-offset: .18em; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+p { margin: 0 0 1rem; }
+.wrap { max-width: 62rem; margin: 0 auto; }
+
+/* masthead */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--rule);
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))) calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.nav .wrap { display: flex; flex-direction: column; gap: .5rem; align-items: center; padding-block: 1rem .7rem; }
+.nav .name { font: 600 clamp(1.4rem, 4vw, 2rem)/1 var(--font); letter-spacing: .14em; text-transform: uppercase; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.nav nav { display: flex; gap: 1.6rem; overflow-x: auto; scrollbar-width: none; max-width: 100%; font: 400 .8rem/1 var(--font); letter-spacing: .14em; text-transform: uppercase; }
+.nav nav::-webkit-scrollbar { display: none; }
+.nav nav a { color: var(--muted); text-decoration: none; white-space: nowrap; padding-block: .3rem; }
+.nav nav a:hover { color: var(--rose); }
+@media (max-width: 720px) { .nav nav { gap: .5rem 1rem; flex-wrap: wrap; justify-content: center; overflow: visible; letter-spacing: .1em; } }
+section { scroll-margin-top: 7rem; }
+.k { font: 600 .76rem/1.3 var(--font); letter-spacing: .14em; text-transform: uppercase; color: var(--rose); margin: 0 0 .6rem; }
+h2 { font: 500 clamp(1.9rem, 5vw, 2.6rem)/1.1 var(--font); margin: 0 0 1.2rem; text-wrap: balance; }
+h2 em, h1 em { color: var(--accent); font-style: normal; }
+
+/* hello */
+.about { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 3rem; padding-block: clamp(2.2rem, 7vw, 4rem) 3rem; align-items: start; }
+@media (max-width: 820px) { .about { grid-template-columns: 1fr; gap: 1.6rem; } .about .photo { order: -1; max-width: 18rem; } }
+.about h1 { font: 400 clamp(1.9rem, 5vw, 2.7rem)/1.15 var(--font); margin: 0 0 1.3rem; text-wrap: balance; }
+.about .lead { font-size: 1.2rem; line-height: 1.55; }
+.quote { font: italic 400 1.25rem/1.45 var(--font); border-left: 2px solid var(--rose); padding-left: 1rem; margin: 1.5rem 0; }
+.photo { aspect-ratio: 4 / 5; border: 1.5px dashed var(--rose); border-radius: 6px; display: grid; place-items: center; text-align: center; padding: 1.4rem; color: var(--rose); font-size: .9rem; background: var(--rose-soft); }
+.btns { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin-top: 1.4rem; }
+.btn { display: inline-block; font: 500 .9rem/1 var(--font); letter-spacing: .04em; padding: .8rem 1.1rem; border-radius: 999px; text-decoration: none; border: 1px solid var(--accent); color: var(--accent); }
+.btn.solid { background: var(--accent); color: var(--paper); }
+.btn.ghost { border-color: var(--rule); color: var(--ink); }
+.btn.ghost:hover { border-color: var(--accent); }
+.btns .sep { width: 1px; height: 1.6rem; background: var(--rule); margin-inline: .2rem; }
+@media (max-width: 520px) { .btns .sep { display: none; } }
+
+/* how I think */
+.think { padding-block: 3rem; border-top: 1px solid var(--rule); }
+.think .intro { max-width: 40rem; }
+.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-top: 1.6rem; counter-reset: p; }
+@media (max-width: 760px) { .principles { grid-template-columns: 1fr; gap: 1rem; } }
+.principles div { background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 1.1rem 1.2rem; }
+.principles div::before { counter-increment: p; content: counter(p); display: block; font: 500 2rem/1 var(--font); color: var(--rose); margin-bottom: .5rem; }
+.principles b { display: block; font: 500 1.2rem/1.25 var(--font); margin-bottom: .35rem; }
+.principles span { color: var(--muted); font-size: .98rem; }
+
+/* writing samples, grouped by form */
+.library { padding-block: 3rem; border-top: 1px solid var(--rule); }
+.library .intro { max-width: 40rem; }
+.group { margin-top: 2.4rem; }
+.group > h3 { font: 600 .9rem/1.3 var(--font); letter-spacing: .14em; text-transform: uppercase; margin: 0 0 .2rem; padding-bottom: .6rem; border-bottom: 1px solid var(--rule); }
+.item { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 1.6rem; padding: 1.5rem 0; border-bottom: 1px solid var(--rule); align-items: start; }
+.item:nth-child(odd) .media { order: -1; }
+.item:nth-child(odd):has(.media) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+@media (max-width: 760px) { .item, .item:nth-child(odd):has(.media) { grid-template-columns: 1fr; gap: .9rem; } .item:nth-child(odd) .media { order: 0; } }
+.item h4 { font: 400 1.35rem/1.25 var(--font); margin: 0 0 .5rem; }
+.item h4 small { font: 600 .82rem/1 var(--font); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: .35rem; }
+.acts { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; margin: 0 0 .7rem; font: 600 .95rem/1.4 var(--font); }
+.acts a, .acts summary { color: var(--accent); text-decoration: none; cursor: pointer; }
+.acts a:hover, .acts summary:hover { text-decoration: underline; }
+.item p { font-size: 1rem; }
+.item .proj { font-style: italic; color: var(--muted); font-size: .92rem; margin: 0; }
+.item:not(:has(.media)) { grid-template-columns: minmax(0, 1fr); }
+.item:not(:has(.media)) > div { max-width: 40rem; }
+.media img { width: 100%; border-radius: 6px; display: block; aspect-ratio: 16 / 10; object-fit: cover; background: #000; }
+.inline { margin: 0; }
+.inline summary { list-style: none; display: inline; }
+.inline summary::-webkit-details-marker { display: none; }
+.inline[open] summary::after { content: " · close"; }
+.inline .text { margin-top: .9rem; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 1rem 1.1rem; font-size: 1rem; }
+.inline .text p { margin: 0 0 .45rem; padding-left: 1rem; text-indent: -1rem; }
+.inline .text b { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
+.inline .text .n { padding: .6rem 0 0; text-indent: 0; margin-top: .6rem; border-top: 1px solid var(--rule); font-style: italic; color: var(--muted); font-size: .94rem; }
+.inline .text .reg { text-indent: 0; padding: 0; font-style: italic; color: var(--muted); font-size: .92rem; }
+.specific { margin-top: 2.2rem; }
+.specific h3 { font: 500 1.4rem/1.2 var(--font); color: var(--accent); margin: 0 0 .5rem; }
+
+/* projects */
+.games { padding-block: 3rem; border-top: 1px solid var(--rule); }
+.game { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 1.6rem; padding: 1.4rem 0; border-bottom: 1px solid var(--rule); align-items: center; }
+@media (max-width: 720px) { .game { grid-template-columns: 1fr; gap: .9rem; } }
+.game img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; display: block; background: #000; }
+.game img.contain { object-fit: contain; }
+.game .claim { font: 500 1.7rem/1.1 var(--font); margin: 0 0 .2rem; }
+.game .name { font: 600 .78rem/1.3 var(--font); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 .7rem; }
+.more { margin-top: 2.6rem; }
+.more h3 { font: 500 clamp(1.6rem, 4vw, 2rem)/1.1 var(--font); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin: 0 0 1.2rem; }
+.more-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.4rem; }
+@media (max-width: 680px) { .more-cols { grid-template-columns: 1fr; } }
+.more ul { margin: 0; padding-left: 1.1rem; }
+.more li { margin-bottom: .6rem; font-size: 1rem; }
+.more li b { font-weight: 600; }
+.more li .r { color: var(--muted); }
+.more h4 { font: 600 .82rem/1.3 var(--font); letter-spacing: .14em; text-transform: uppercase; color: var(--rose); margin: 1.4rem 0 .6rem; }
+.fillrow { background: var(--rose-soft); border: 1px dashed var(--rose); color: var(--rose); padding: .5rem .7rem; border-radius: 6px; font-size: .92rem; list-style: none; margin-left: -1.1rem; }
+.circles { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+@media (max-width: 680px) { .circles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.circles img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; display: block; background: #000; }
+
+/* FAQ, Kelsey-style list then answers */
+.faq { padding-block: 3rem; border-top: 1px solid var(--rule); }
+.faq .intro { max-width: 42rem; }
+.faq .list { margin: 1rem 0 2rem; padding-left: 1.2rem; }
+.faq .list li { margin-bottom: .35rem; }
+.faq .list a { text-decoration: none; }
+.faq .list a:hover { text-decoration: underline; }
+.qa { padding: 1.6rem 0; border-top: 1px solid var(--rule); max-width: 46rem; scroll-margin-top: 7rem; }
+.qa h3 { font: 400 1.35rem/1.3 var(--font); margin: 0 0 .7rem; }
+.qa .back { display: block; text-align: center; font-size: .9rem; text-decoration: none; margin-top: .6rem; }
+.nine { columns: 2; column-gap: 2rem; padding-left: 1.4rem; margin: 0; }
+@media (max-width: 520px) { .nine { columns: 1; } }
+.nine li { margin-bottom: .35rem; break-inside: avoid; }
+.fill { background: var(--rose-soft); border: 1px dashed var(--rose); padding: .6rem .8rem; color: var(--rose); border-radius: 8px; font-size: .95rem; }
+
+.contact { padding-block: 3rem 1rem; border-top: 1px solid var(--rule); }
+.addr { user-select: all; font-weight: 500; }
+.nav nav a[aria-current="page"] { color: var(--ink); box-shadow: inset 0 -2px 0 var(--rose); }
+.foot { border-top: 1px solid var(--rule); margin-top: 2rem; padding-block: 1.4rem 0; font-size: .92rem; color: var(--muted); }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; }
+.page-top { padding-top: clamp(2rem, 6vw, 3.2rem); border-top: 0 !important; }
+.next-pages { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.6rem; }
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap"><a class="name" href="index.html">Andrea D’Angelo</a>
+  <nav aria-label="Pages"><a href="index.html">About</a><a href="projects.html">Projects</a><a href="samples.html" aria-current="page">Samples</a><a href="faq.html">FAQ</a><a href="index.html#contact">Contact</a></nav></div></header>
+
+<main class="wrap">
+  <section class="library page-top" id="writing">
+    <p class="k">Writing samples</p>
+    <h2>Straight from <em>the documents</em>.</h2>
+
+    <div class="group">
+      <h3>Interactive and branching</h3>
+      <div class="item">
+        <div><h4><small>Playable branching</small>Liber Paradisus</h4>
+          <p class="acts"><a href="play-liber-paradisus.html">▶ Play the three choices</a><a href="liber-paradisus.html">Read the design document</a></p>
+          <p>Red, a delivery rider in Bologna, is exhausted and late for one more order. His customer is waiting for him: a man who recites the Liber Paradisus, and who seems genuinely eager to meet his rider. Three choices decide whether Red gets there on time.</p>
+          <p class="proj">Nocturama Bononia, 2021</p></div>
+        <div class="media"><img src="img/noc_red.jpg" alt="Red with his bike outside a burger place." loading="lazy"></div>
+      </div>
+      <div class="item">
+        <div><h4><small>Design document · Branching state · Setup and payoff</small>Requiescat</h4>
+          <p class="acts"><a href="requiescat.html">Read the design document</a></p>
+          <p>Dalia has been hunting ghosts for twenty years, and none has ever fooled her. Then a letter asks for help from Villa Clara, abandoned for centuries. The design document shows a choice that the episode remembers all the way to one of three endings.</p>
+          <p class="proj">Nocturama Bononia, 2021</p></div>
+        <div class="media"><img src="img/noc_dalia.jpg" alt="Dalia, the ghost hunter, with her glowing pistols." loading="lazy"></div>
+      </div>
+      <div class="item">
+        <div><h4><small>Structure · In-game text</small>Two Soloists</h4>
+          <p class="acts"><a href="two-soloists.html">Read the sample</a></p>
+          <p>Carlo, an acclaimed pianist, makes his debut at the Teatro Comunale. Each passage he plays matches a murder in the alleys of the city. The sample shows a structure in which the player’s playing and the past depend on each other.</p>
+          <p class="proj">Nocturama Bononia, 2021</p></div>
+        <div class="media"><img src="img/noc_demon.jpg" alt="The demon of Two Soloists." loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Screenplay and audio</h3>
+      <div class="item">
+        <div><h4><small>Quest document · Screenplay · Audio</small>The Stone Circle</h4>
+          <p class="acts"><a href="the-stone-circle.html">♪ Listen and read</a></p>
+          <p>A duel in an audio-only western: two cutscenes in screenplay format and the audio duel between them, with the scene as it plays in the released game.</p>
+          <p class="proj">A Western Drama, 2020</p></div>
+        <div class="media"><img src="img/cv_awd.jpg" alt="A Western Drama key art." loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Dialogue and item text</h3>
+      <div class="item">
+        <div><h4><small>Dialogue · Item descriptions · Fragments of humanity</small>Hell Galaxy</h4>
+          <p class="acts"><a href="hell-galaxy-texts.html">Read the sample</a></p>
+          <p>In a space shooter the player rarely stops to read, so the story travels through many channels: Homerus, the ship’s AI, who goes from a tool built to assist to an accomplice; the descriptions of the ship’s own parts, some of them sets that tell one story together; and Tonath, a bounty that turns.</p>
+          <p class="proj">Hell Galaxy, Italian Games Factory, 2026</p></div>
+        <div class="media"><img src="img/cv_hg.jpg" alt="Hell Galaxy key art." loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Design documents and characters</h3>
+      <div class="item">
+        <div><h4><small>Character bible</small>Wade, Drake and the Four</h4>
+          <p class="acts"><a href="awd-characters.html">Read the sample</a></p>
+          <p>The character documents the whole production worked from: look, weapons, psychology and, for the voice cast, how each character sounds.</p>
+          <p class="proj">A Western Drama, 2020</p></div>
+        <div class="media"><img src="img/wade.jpg" alt="Wade, character art." loading="lazy" style="object-fit:contain;background:#fff"></div>
+      </div>
+      <div class="item">
+        <div><h4><small>Mission flow</small>Fury Driver</h4>
+          <p class="acts"><a href="fury-driver.html">Read the sample</a></p>
+          <p>An audio-only racing game made narrative: what a race costs the protagonist, and who it is really against. Each step pairs what the player does with its story function.</p>
+          <p class="proj">Fury Driver 1 &amp; 2, audiogames</p></div>
+      </div>
+    </div>
+
+    <div class="group" id="beyond">
+      <h3>Beyond games</h3>
+      <div class="item">
+        <div><h4><small>Short film screenplay</small>Blackbird</h4>
+          <p class="acts"><a href="blackbird.html">Read the screenplay</a></p>
+          <p>An old jazz pianist who has never been able to play with anyone. One piece of music runs through the whole short, while flashbacks bring back his father, his son and a blackbird.</p>
+          <p class="proj">Original short film script</p></div>
+      </div>
+    </div>
+
+    <div class="specific">
+      <h3>Looking for something specific?</h3>
+      <p>If you would like to see a particular kind of document, write to me.</p>
+    </div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><span>Let’s talk: <a href="mailto:andrea.dangelo27@gmail.com">andrea.dangelo27@gmail.com</a></span><span><a href="https://www.linkedin.com/in/andrea-d-angelo27/" rel="noopener">LinkedIn</a> · <a href="files/Andrea_DAngelo_Portfolio.pdf">PDF portfolio</a></span></div></footer>
+</body>
+</html>

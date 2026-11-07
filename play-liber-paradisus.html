@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Liber Paradisus, Playable Cut · Andrea D’Angelo</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Jost:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a comic reader without panels. Frame, direction, lines; choices as buttons.
+   Single dark theme by choice: a night ride through Bologna, read like a screen. */
+:root {
+  --bg: #121016; --panel: #1b1820; --ink: #ece7ef; --muted: #a39bab; --rule: #2f2a35;
+  --accent: #d39ab8; --cyan: #8fd3d1; --cap: #f1ece2; --cap-ink: #1d1a17; --gold: #d8c08a;
+  --body: "Jost", Futura, "Century Gothic", Arial, sans-serif; --mono: "IBM Plex Mono", "Courier New", monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 400 1.02rem/1.6 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 3rem; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.bar { max-width: 52rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+  padding-block: 1rem; border-bottom: 1px solid var(--rule); font: 500 .78rem/1.3 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.bar a { color: var(--muted); text-decoration: none; }
+.bar a:hover { color: var(--ink); }
+.head { max-width: 52rem; margin: 0 auto; padding-block: 1.6rem 1rem; }
+.head .k { font: 500 .74rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 .4rem; }
+.head h1 { font: 600 clamp(1.7rem, 5vw, 2.4rem)/1.1 var(--body); margin: 0 0 .5rem; }
+.head p { color: var(--muted); max-width: 40rem; margin: 0; font-size: .95rem; }
+.reader { max-width: 52rem; margin: 0 auto; }
+.status { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; justify-content: space-between; font: 500 .74rem/1.3 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin: .4rem 0 .7rem; }
+.tally { display: inline-flex; gap: .4rem; align-items: center; }
+.tally span { border: 1px solid var(--rule); padding: .25rem .55rem; border-radius: 999px; }
+.tally span.on { border-color: var(--accent); color: var(--ink); }
+.endings { display: flex; gap: .4rem; }
+.endings span { border: 1px solid var(--rule); padding: .2rem .45rem; }
+.endings span.got { border-color: var(--accent); color: var(--accent); }
+.stage { background: var(--panel); border: 1px solid var(--rule); }
+.txt { padding: 1.2rem 1.1rem 1.2rem; min-height: 14rem; }
+.frame { font: 600 .72rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 .8rem; }
+.cap { background: var(--cap); color: var(--cap-ink); padding: .5rem .75rem; margin: 0 0 .6rem; font-style: italic; max-width: 40rem; }
+.cap small { display: block; font: 600 .66rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; font-style: normal; color: #7a6a4a; margin-bottom: .2rem; }
+.line { margin: 0 0 .5rem; }
+.line b { font: 600 .78rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--cyan); margin-right: .4rem; }
+.dir { color: var(--muted); font-style: italic; margin: 0 0 .6rem; }
+.fx { opacity: 0; transform: translateY(4px); animation: in .35s ease forwards; }
+@keyframes in { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .fx { animation: none; opacity: 1; transform: none; } }
+.choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; padding: 0 1.1rem 1.2rem; }
+.choices.one { grid-template-columns: 1fr; }
+@media (max-width: 520px) { .choices { grid-template-columns: 1fr; } }
+button.c { font: 500 .92rem/1.3 var(--mono); text-align: left; color: var(--ink); background: transparent; border: 1px solid var(--accent); padding: .75rem .9rem; cursor: pointer; }
+button.c::before { content: "▸ "; color: var(--accent); }
+button.c:hover { background: #2a2030; }
+button.c .v { color: var(--muted); font-size: .8rem; }
+button.c.next { border-color: var(--rule); }
+button.c.next::before { content: ""; }
+button.c.next::after { content: " →"; color: var(--accent); }
+.notes { margin-top: 1rem; border: 1px dashed var(--rule); padding: .8rem 1rem; font-size: .92rem; color: var(--muted); }
+.notes h2 { font: 600 .72rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin: 0 0 .4rem; }
+.notes p { margin: 0 0 .4rem; }
+.toggle { font: 500 .74rem/1.3 var(--mono); letter-spacing: .05em; text-transform: uppercase; background: none; border: 0; color: var(--muted); cursor: pointer; padding: 0; border-bottom: 1px dotted var(--muted); }
+.toggle:hover { color: var(--ink); }
+.foot { max-width: 52rem; margin: 1.6rem auto 0; font-size: .9rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="bar"><a href="samples.html">← Andrea D’Angelo · Writing samples</a><span>Nocturama Bononia · 2021</span></div>
+<header class="head">
+  <p class="k">Writing sample · Playable branching</p>
+  <h1>Liber Paradisus, a playable cut</h1>
+  <p class="tagline" style="font-style:italic;font-size:1.25rem;color:var(--ink);margin:0 0 .6rem">One last delivery. One customer who can’t wait.</p>
+  <p>The whole episode, rebuilt from my design document. Three choices, each counted as on time (O) or late (R); the count decides which of two endings plays. <a href="liber-paradisus.html">Read the design document</a>.</p>
+</header>
+<main class="reader">
+  <div class="status">
+    <span class="tally" aria-label="Tally"><span id="tO">On time (O): 0</span><span id="tR">Late (R): 0</span></span>
+    <span class="endings" aria-label="Endings reached"><span id="e1">Portico of Death</span><span id="e2">Portico of Life</span></span>
+  </div>
+  <div class="stage" aria-live="polite">
+    <div class="txt" id="txt"></div>
+    <div class="choices" id="choices"></div>
+  </div>
+  <div style="margin-top:.8rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+    <button class="toggle" id="tg" type="button" aria-expanded="false">Show the design notes</button>
+    <button class="toggle" id="restart" type="button">Start again</button>
+  </div>
+  <div class="notes" id="notes" hidden></div>
+</main>
+
+<script>
+(function () {
+  var LP = "Liber Paradisus";
+  var S = {
+    intro: { frame: "Opening",
+      body: [["q", "", "In 1259, the legal text known as Liber Paradisus made Bologna the first city to abolish slavery by law. One of the city’s largest squares is named after it, in memory of that act."]],
+      note: ["The episode’s introduction screen."], next: "call" },
+    call: { frame: "Frames 0–4 · Outside the takeaway",
+      body: [["d","Night, Bologna. Red on his bike outside an anonymous takeaway, on the phone with his wife. He looks plainly tired."],
+        ["l","Red","No, don’t worry. I’m not tired."],["l","Red","You know we need it. There’s not much else to say."],
+        ["l","Red","Sure, and then what? What do we do?"],["l","Dalila (V.O.)","Red, I’m just saying…"],
+        ["l","Red","No, Dalila! No! It’s just the way it is. I have to work hard or they’ll kick me out."],
+        ["l","Red","Come on, go to sleep now. I’ll be back late. Don’t worry. Bye."]],
+      note: ["Direction: Red talks over Dalila and cuts her off."], next: "pickup" },
+    pickup: { frame: "Frames 4–7 · The order",
+      body: [["l","Man (O.S.)","Hey."],["d","Red rubs his eyes, worn out by the last rounds."],["l","Man (O.S.)","Hey!"],
+        ["l","Man","Are you in or not?"],["l","Red","Yes, sorry."],["l","Man","Come on! This is the delivery."],
+        ["d","Red puts the food in his company’s bag. The man goes back inside."],
+        ["l","Man","And then all they do is complain…"],["l","Man","NEXT!"]], next: "rain" },
+    rain: { frame: "Frames 8–14 · Late, in the rain",
+      body: [["d","Red sets off. High shot: he is small among the cars, horns, headlights."],
+        ["q", LP, "This is the memorial of the servants and maids who were freed by the City of Bologna; and this memorial should rightly be called Paradisus"],
+        ["l","Red","I know, I’m late!"],["d","Clouds. Then heavy rain on the car roofs."],["l","Red","Shit."],
+        ["d","Red’s wheels cut through the puddles, lit by a car’s headlights."],["l","Red (O.S.)","I’ll never make it."]],
+      note: ["Design document: the player makes THREE CHOICES, each between two options marked O (on time) and R (late). If O > R, the ending under the Portico of Death; otherwise, the Portico of Life.","Captions from the Liber Paradisus run through the episode."], next: "c1" },
+    c1: { frame: "Frame 15 · The first choice",
+      body: [["d","Red’s phone fills the frame: an incoming call from Dalila, her name and photo visible."],
+        ["q", LP, "But this miserable creature, forgetful of his own dignity and his divine gift… miserably brought himself and all his descendants into this valley and greatly poisoned humankind by miserably binding it with the bonds of diabolical servitude…"]],
+      note: ["Design document: two objects, the GREEN button (R) and the RED button (O).","Note to the artist: the objects you can interact with must look great, so that you want to touch them."],
+      choices: [["Answer", "R", "answer"], ["Decline", "O", "decline"]] },
+    answer: { frame: "Frames 16–20 · If he answers",
+      body: [["d","Red pulls over by the sidewalk."],["l","Red","Hello?"],["l","Red","I know, Dalila. I know. I’m not angry."],
+        ["l","Red","No, it was me. Don’t worry, we’ll talk about it tomorrow. I love you."],
+        ["d","He sets off again. It is still raining."],["l","Red","Damn, I’m late…"]], next: "jam" },
+    decline: { frame: "Frame 21 · If he declines",
+      body: [["d","Red rides with his head down, straining. We do not see his eyes."],["l","Red","Maybe I’ll make it."]], next: "jam" },
+    jam: { frame: "Frames 22–23",
+      body: [["d","The wheels spin faster and faster, spraying rain everywhere."],["l","Red","C’mon…"],
+        ["d","Right in front of him, a line of cars with no gap to get through."],["l","Red","Oh, no…"]],
+      note: ["Both branches meet here; the first choice is already counted."], next: "c2" },
+    c2: { frame: "Frame 24 · The second choice",
+      body: [["d","Long shot from behind. Red at the edge of the road; the avenue opens ahead of him."],
+        ["q", LP, "Considering all this, the noble city of Bologna, which has always fought for liberty, mindful of the past and preparing the future… redeemed for a monetary price all those that, in the city or the diocese of Bologna, it found to be oppressed in servile condition…"]],
+      note: ["Design document: the road full of cars (R) or the adjacent sidewalk, free of obstacles (O). Both light up slightly when the player hovers over them."],
+      choices: [["The road full of cars", "R", "road"], ["The free sidewalk", "O", "sidewalk"]] },
+    road: { frame: "Frames 25–29 · The road",
+      body: [["d","Red waits for the traffic to clear, among horns and rain. Fist on his cheek, elbow on the handlebar, he closes his eyes for a moment."],
+        ["l","Driver (shouting)","HEY YOU! COME ON WITH THAT BIKE!"],["l","Driver (O.S.)","MOVE!"],
+        ["d","Red pulls away; the car can finally move."],["l","Driver","Fucking rider…"]], next: "c3" },
+    sidewalk: { frame: "Frames 30–33 · The sidewalk",
+      body: [["d","Red’s wheels climb onto the sidewalk. He speeds along it and bumps a woman with an umbrella, almost knocking her over."],
+        ["l","Red","EXCUSE ME!"],["l","Woman","Goddamn riders!"]], next: "c3" },
+    c3: { frame: "Frame 34 · The third choice",
+      body: [["d","Red, full figure from the front, head down. On both sides of the frame, the same detail: his feet on the pedals."],
+        ["q", LP, "…and after careful scrutiny decreed to free them…"]],
+      note: ["Design document: two speech bubbles are the objects. One to speed up (O), one to slow down (R)."],
+      choices: [["Faster!", "O", "fast"], ["Slow down…", "R", "slow"]] },
+    fast: { frame: "Frame 35", body: [["d","Red races past the buildings of Piazza Liber Paradisus. The rain has stopped."]], tally: true },
+    slow: { frame: "Frame 36", body: [["d","Red brakes a little. He is in Piazza Liber Paradisus. The rain has stopped."]], tally: true },
+    d1: { frame: "Frames 37–44 · On time",
+      body: [["d","Red barely has time to turn toward a bright light coming at him from the side. The car hits his bike full on, then speeds away."],
+        ["d","Red lies on his back in the road, his bag half torn. A cut on his cheek. He opens his eyes and gets to his knees."],
+        ["l","Red","Fuck. A miracle… fuck."],["d","He picks up the bike and looks at his phone."],["l","Red","There’s still time."]],
+      next: "d2" },
+    d2: { frame: "Frames 45–47 · Toward the Portico of Death",
+      body: [["d","Red sets off again."],
+        ["q", LP, "…further establishing that in the future no one being constrained in any forms of servitude should dare settle in the city or the diocese…"],
+        ["q", LP, "Therefore it is a very appropriate thing that, by a manumission, men are restored to their original freedom…"],
+        ["d","He passes the church of San Petronio."],["q", LP, "…people that nature originally engendered to be free…"],
+        ["d","At the start of the Portico of Death a man is waiting for him, talking to himself. We never see his hands."],
+        ["l","The customer","“…and the law of nations later subjected to the yoke of servitude.” The Liber Paradisus."]], next: "d3" },
+    d3: { frame: "Frames 48–56 · The customer",
+      body: [["l","The customer","Finally! I’ve been waiting for you."],["l","Red","I’m sorry, I…"],
+        ["l","The customer","About what? You’re right on time!"],["l","The customer","You look worse for wear. What happened to you?"],
+        ["l","Red","Someone… with the car… they fled…"],
+        ["d","Red’s phone: the wallpaper, Dalila, glitches and flickers with disturbing figures."],
+        ["l","The customer","And you got this far? You didn’t call for help?"],["l","Red","No…"],
+        ["l","The customer","This is crazy! Blessed boy, come to my house, I’ll give you a hand."],
+        ["l","Red","But I… I don’t know…"],["l","The customer","I absolutely insist! You are in a really bad shape."]],
+      note: ["Direction: the man stays serene and calm throughout."], next: "d4" },
+    d4: { frame: "Frames 57–58 · Under the Portico of Death",
+      body: [["l","Red","But may I…?"],["l","The customer","Oh, don’t worry!"],
+        ["d","Seen from behind, the two walk along the Portico of Death. The man rests his right hand on Red’s shoulder: a skeleton’s hand."],
+        ["l","The customer","Come on, this way."],["l","The customer","We will eat my order together."],
+        ["d","Close-up of the skeletal hand."],["l","The customer (O.S.)","You just need to rest now."]],
+      note: ["Arriving on time is the fatal ending."], fin: 1 },
+    l1: { frame: "Frames 59–61 · Late",
+      body: [["d","Red rides on, unhurt."],["l","Red","Maybe I’ll make it…"],
+        ["q", LP, "…further establishing that in the future no one being constrained in any forms of servitude should dare settle in the city or the diocese…"],
+        ["d","His phone beeps: a notification."],
+        ["q", LP, "…so that the mass of those either born free or liberated through enfranchisement…"],
+        ["d","Red brakes beside the Portico of Life."],["l","Red","Waiver for delay… fuck off."],
+        ["q", LP, "…may not be corrupted again by any ferment of servitude…"]],
+      next: "l2" },
+    l2: { frame: "Frames 62–65 · The Portico of Life",
+      body: [["d","Red stands with the bike at his feet and the bag in his hand."],["l","Red","That’s fucking enough."],
+        ["q", LP, "…for even a small amount of ferment can corrupt a whole community…"],
+        ["d","He hurls the bag into a bin."],["l","Red","Fuck this shit."],["q", LP, "…as a single wicked man…"],
+        ["l","Hooded figure (O.S.)","“…could dishonour…”"],["l","Red","Huh?"],
+        ["d","A hooded figure, impossible to recognise, stares at him. Then it is gone."],
+        ["l","Red","Who…"],["l","Red","…the fuck…"]], next: "l3" },
+    l3: { frame: "Frames 66–68 · Going home",
+      body: [["d","Red dials a number. Behind him, the hooded figure has reappeared and watches him walk away along the Portico of Life."],
+        ["l","Hooded figure","“…a multitude of virtuous men.” The Liber Paradisus…"],["l","Red","You were right, honey…"],
+        ["d","On a wall beside him, graffiti in three lines: “Night as cold as the hand of death / That takes my heart / And throws it in a ditch.”"],
+        ["l","Red","I’m coming home."]],
+      note: ["The graffiti is drawn into the art and is not localised."], fin: 2 }
+  };
+  var picks = [], got = {}, showNotes = false;
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function body(items) {
+    var box = document.createDocumentFragment();
+    items.forEach(function (it, i) {
+      var p;
+      if (it[0] === "q") { p = el("p", "cap fx"); if (it[1]) p.appendChild(el("small", null, it[1])); p.appendChild(document.createTextNode("“" + it[2] + "”")); }
+      else if (it[0] === "d") p = el("p", "dir fx", it[1]);
+      else { p = el("p", "line fx"); p.appendChild(el("b", null, it[1] + ":")); p.appendChild(document.createTextNode(it[2])); }
+      p.style.animationDelay = (i * 0.1) + "s";
+      box.appendChild(p);
+    });
+    return box;
+  }
+  function count(v) { return picks.filter(function (x) { return x === v; }).length; }
+  function setTally() {
+    var o = count("O"), r = count("R");
+    $("tO").textContent = "On time (O): " + o; $("tR").textContent = "Late (R): " + r;
+    $("tO").className = o ? "on" : ""; $("tR").className = r ? "on" : "";
+  }
+  function btn(label, cls, fn) { var b = el("button", cls); b.type = "button"; b.appendChild(document.createTextNode(label)); b.addEventListener("click", fn); return b; }
+  function go(id) {
+    var s = S[id];
+    var t = $("txt"); t.innerHTML = "";
+    if (s.frame) t.appendChild(el("p", "frame", s.frame));
+    t.appendChild(body(s.body));
+    var ch = $("choices"); ch.innerHTML = ""; ch.className = "choices";
+    if (s.choices) {
+      s.choices.forEach(function (c) {
+        var b = btn(c[0] + " ", "c", function () { picks.push(c[1]); setTally(); go(c[2]); });
+        b.appendChild(el("span", "v", c[1] === "O" ? "· on time (O)" : "· late (R)"));
+        ch.appendChild(b);
+      });
+    } else if (s.tally) {
+      ch.className = "choices one";
+      var o = count("O"), r = count("R");
+      ch.appendChild(btn((o > r ? "More on time: " + o + " to " + r : "More late: " + r + " to " + o), "c next", function () { go(o > r ? "d1" : "l1"); }));
+    } else if (s.fin) {
+      got[s.fin] = true; $("e" + s.fin).className = "got";
+      ch.className = "choices one";
+      var left = [1, 2].filter(function (n) { return !got[n]; });
+      ch.appendChild(btn(left.length ? "Play again and reach the " + (left[0] === 1 ? "Portico of Death" : "Portico of Life") : "You have seen both endings. Play again", "c next", restart));
+    } else {
+      ch.className = "choices one";
+      ch.appendChild(btn("Next", "c next", function () { go(s.next); }));
+    }
+    var notes = $("notes"); notes.innerHTML = "";
+    notes.appendChild(el("h2", null, "Design note"));
+    var n = s.note;
+    if (s.tally) n = ["Design document: if O > R, go to the ending under the Portico of Death; otherwise, to the Portico of Life. Your count: " + count("O") + " on time, " + count("R") + " late."];
+    (n || ["No note for this frame."]).forEach(function (x) { notes.appendChild(el("p", null, x)); });
+  }
+  function restart() { picks = []; setTally(); go("intro"); $("txt").scrollIntoView({ behavior: "smooth", block: "center" }); }
+  $("tg").addEventListener("click", function () {
+    showNotes = !showNotes; $("notes").hidden = !showNotes;
+    this.setAttribute("aria-expanded", showNotes); this.textContent = showNotes ? "Hide the design notes" : "Show the design notes";
+  });
+  $("restart").addEventListener("click", restart);
+  go("intro");
+})();
+</script>
+</body>
+</html>

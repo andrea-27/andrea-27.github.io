@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Stone Circle, Quest Document · Andrea D’Angelo</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Jost:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a desk with one document on it. The quest document reads as a document;
+   the two cutscenes are set as real screenplay pages (Courier 12, standard indents). */
+:root {
+  --desk: #eef2f0; --paper: #fdfcfb; --ink: #1f1d22; --muted: #6a6470; --rule: #d9d5dc;
+  --accent: #3d6d67; --soft: #dce9e5;
+  --page-shadow: 0 1px 2px rgba(30,20,35,.08), 0 8px 24px rgba(30,20,35,.08);
+  --script: "Courier Prime", "TeX Gyre Cursor", "Courier New", Courier, monospace;
+  --body: "Jost", Futura, "Century Gothic", Arial, sans-serif; --mono: "Jost", Futura, "Century Gothic", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --desk: #17151a; --paper: #f6f3ef; --ink: #1f1d22; --muted: #5f5966; --rule: #d9d5dc; --accent: #3d6d67; --soft: #dce9e5; --page-shadow: 0 8px 30px rgba(0,0,0,.5); color-scheme: dark; } }
+:root[data-theme="dark"] { --desk: #17151a; --paper: #f6f3ef; --ink: #1f1d22; --muted: #5f5966; --rule: #d9d5dc; --accent: #3d6d67; --soft: #dce9e5; --page-shadow: 0 8px 30px rgba(0,0,0,.5); color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--desk); color: var(--ink); font: 400 1rem/1.6 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 4rem; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.bar { max-width: 50rem; margin: 0 auto; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: center;
+  padding-block: 1rem; font: 500 .78rem/1.3 var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+.bar a { text-decoration: none; color: var(--muted); }
+.bar a:hover { color: var(--accent); }
+.bar .dl { color: var(--accent); border: 1px solid var(--accent); padding: .45rem .7rem; }
+.listen { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 4; max-width: 50rem; margin: 0 auto 1.2rem; background: var(--desk); padding-block: .6rem; }
+.listen-in { display: flex; align-items: center; gap: .9rem; flex-wrap: wrap; background: var(--paper); box-shadow: var(--page-shadow); padding: .6rem .8rem; color: #1f1d22; }
+.listen-in span { font: 500 .72rem/1.35 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: #3d6d67; }
+.listen-in audio { flex: 1 1 16rem; min-width: 0; height: 2.2rem; }
+.listen-in small { flex-basis: 100%; font: 400 .78rem/1.4 var(--mono); color: #6a6470; }
+.page { max-width: 50rem; margin: 0 auto 1.6rem; background: var(--paper); color: #1f1d22; box-shadow: var(--page-shadow); padding: clamp(1.4rem, 6vw, 4.5rem) clamp(1.1rem, 7vw, 5.5rem); }
+.doc-k { font: 500 .72rem/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #3d6d67; margin: 0 0 .5rem; }
+h1 { font: 600 clamp(1.7rem, 5vw, 2.3rem)/1.1 var(--body); margin: 0 0 .3rem; }
+.sub { color: #6a6470; margin: 0 0 1.6rem; font-style: italic; }
+h2 { font: 600 .82rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #3d6d67; margin: 1.8rem 0 .6rem; border-bottom: 1px solid #d9d5dc; padding-bottom: .35rem; }
+.kv { display: grid; grid-template-columns: 11rem minmax(0,1fr); gap: 0; font-size: .95rem; }
+.kv > * { padding: .35rem 0; border-bottom: 1px solid #ece8ee; }
+.kv dt { font-weight: 600; }
+.kv dd { margin: 0; }
+@media (max-width: 520px) { .kv { grid-template-columns: 1fr; } .kv dt { border-bottom: 0; padding-bottom: 0; } }
+.phase { font: 600 1rem/1.3 var(--body); margin: 1.4rem 0 .3rem; }
+.reg { font-size: .9rem; color: #6a6470; font-style: italic; }
+ul { padding-left: 1.2rem; } li { margin-bottom: .35rem; } li::marker { color: #3d6d67; }
+/* screenplay: 12pt Courier, standard indents relative to a 6in text block */
+.screenplay { font: 400 12pt/1.25 var(--script); margin: 1.4rem 0; padding: 1.4rem 0; border-block: 1px dashed #d9d5dc; }
+.screenplay p { margin: 0; }
+.screenplay .slug { font-weight: 700; text-transform: uppercase; margin-bottom: 1em; }
+.screenplay .act { margin: 0 0 1em; max-width: 100%; }
+.screenplay .sfx { font-weight: 700; margin: 1em 0; }
+.screenplay .who { margin: 0 0 0 37%; text-transform: uppercase; }
+.screenplay .par { margin: 0 0 0 29%; max-width: 40%; }
+.screenplay .ln { margin: 0 17% 0 17%; }
+.screenplay .ln + .who, .screenplay .ln + .act, .screenplay .ln + .sfx { margin-top: 1em; }
+.screenplay .ln + .par { margin-top: 0; }
+.screenplay .act + .who, .screenplay .sfx + .who, .screenplay .slug + .who { margin-top: 0; }
+.screenplay .hl { background: #dce9e5; }
+@media (max-width: 600px) {
+  .screenplay { font-size: 10.5pt; }
+  .screenplay .who { margin-left: 22%; }
+  .screenplay .par { margin-left: 14%; max-width: none; }
+  .screenplay .ln { margin: 0 4% 0 8%; }
+}
+.notes { background: #dce9e5; padding: 1rem 1.1rem; margin-top: 1.6rem; font-size: .95rem; }
+.notes b { font: 600 .72rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #3d6d67; display: block; margin-bottom: .3rem; }
+@media print {
+  @page { size: A4; margin: 18mm 20mm; }
+  body { background: #fff; padding: 0; }
+  .bar, .listen { display: none; }
+  .page { box-shadow: none; padding: 0; max-width: none; margin: 0; }
+  .screenplay { break-inside: auto; }
+  .who { break-after: avoid; } .par { break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="bar"><a href="samples.html">← Andrea D’Angelo · Writing samples</a></div>
+<div class="listen"><div class="listen-in"><span>Listen · the scene in the released game · 4:15</span>
+  <audio controls preload="none" src="audio/a-western-drama-stone-circle.mp3"></audio>
+  <small>Best with headphones: the direction relies on spatial cues.</small></div></div>
+<article class="page">
+  <p class="doc-k">A Western Drama · Quest document</p>
+  <h1>CP_MIS06 · The Stone Circle</h1>
+  <p class="sub">The final mission: two cutscenes and the audio duel between them.</p>
+  <h2>1 · Overview</h2>
+  <dl class="kv">
+    <dt>Quest ID</dt><dd>CP_MIS06</dd>
+    <dt>Quest title</dt><dd>The Stone Circle</dd>
+    <dt>Quest type</dt><dd>Main (climax and finale of Act 3)</dd>
+    <dt>Location / trigger</dt><dd>Automatic transition from the previous scene, MAP_STONECIRCLE</dd>
+    <dt>NPCs involved</dt><dd>DRAKE (antagonist / father)</dd>
+    <dt>Access requirements</dt><dd>Completion of the previous mission (the horse chase with Drake)</dd>
+  </dl>
+  <h2>2 · Quest goals</h2>
+  <p><b>1.</b> Survive the duel: defeat Drake in the stone circle before he shoots.</p>
+  <h2>3 · Narrative context</h2>
+  <p><b>Synopsis.</b> Wade has finally cornered Drake, the man who raised him as a bounty hunter but turned out to be the murderer of his mother and his brother, Homerus. Drake is actually Wade’s real biological father, and he has lied to him his entire life, manipulating him and hiding the truth for his own benefit. Inside a stone circle sacred to the Native Americans, the two face each other in a ritual duel to the very last bullet, to settle accounts once and for all.</p>
+  <h2>4 · Gameplay and flow</h2>
+  <p class="phase">Phase 1 · Cutscene CP_MIS06_SSC03</p>
+  <p><b>Context.</b> Drake is on the ground, aching from the previous fight, but still laughing with the arrogance of a man who believes he still owns his “apprentice”. Wade stands over him, consumed by anger.</p>
+  <p class="reg">Script register: clipped and sardonic. Two men who have lied to each other for years; the menace sits under the calm.</p>
+<div class="screenplay">
+<p class="slug">OUTDOOR – MAP_STONECIRCLE</p>
+<p class="act">Drake is on the ground, aching but unhurt.</p>
+<p class="who">DRAKE</p>
+<p class="par">(on the ground, in pain. He laughs)</p>
+<p class="ln">Yeah, Wade, you did it. You did it well.</p>
+<p class="who">WADE</p>
+<p class="par">(genuinely angry)</p>
+<p class="ln">You’re... the biggest son of a bitch I’ve ever met!</p>
+<p class="act">Drake gets back on his feet and straightens himself up.</p>
+<p class="who">DRAKE</p>
+<p class="ln">I’ve taught you the reason for certain choices all my life. One reason: money. And you followed me... son.</p>
+<p class="who">WADE</p>
+<p class="par">(shouting)</p>
+<p class="ln">Don’t you dare call me that!</p>
+<p class="who">DRAKE</p>
+<p class="par">(laughs)</p>
+<p class="ln">But you are! I saved you as a child! They would’ve killed you. No one gives a fuck about a child in this country!</p>
+<p class="who">WADE</p>
+<p class="par">(furious)</p>
+<p class="ln">You killed my mother. You killed my brother. You lied!</p>
+<p class="who">DRAKE</p>
+<p class="par">(calmly)</p>
+<p class="ln">You did too. It’s our trade. What matters is the bounty. This is how we survive.</p>
+<p class="act">Wade regains his composure. He remains implacable.</p>
+<p class="who">WADE</p>
+<p class="par">(calm again, but still relentless)</p>
+<p class="ln">You’re right. You always told me the same thing… a bounty hunter lives off the reward.</p>
+<p class="par">(beat)</p>
+<p class="ln">The government put a bounty on your head, like the natives. Yours must have been pretty big.</p>
+<p class="who">DRAKE</p>
+<p class="par">(laughs)</p>
+<p class="ln">Bullshit! I’m clean now, Wade!</p>
+<p class="who">WADE</p>
+<p class="ln">No. No, you ain’t. You never will be. But I want to give you a chance. Like the one you gave to me.</p>
+<p class="who">DRAKE</p>
+<p class="par">(laughs)</p>
+<p class="ln">You going to start calling me father?</p>
+<p class="sfx">SFX_GUN&amp;CHARGE</p>
+<p class="act">Wade loads a gun with a single bullet and throws it to Drake.</p>
+<p class="who">DRAKE</p>
+<p class="ln">What does this mean?</p>
+<p class="who">WADE</p>
+<p class="ln">It’s Homerus’ gun. The son you killed twice. It just has one bullet... like mine.</p>
+<p class="who">DRAKE</p>
+<p class="par">(sneers)</p>
+<p class="ln">I’ve always been a better shot than you!</p>
+<p class="who">WADE</p>
+<p class="ln">You’re right. But you ain’t got no other way out.</p>
+<p class="par">(beat, bitter smile)</p>
+<p class="ln">Funny. We’re in a stone circle...</p>
+<p class="who">DRAKE</p>
+<p class="ln">I can see.</p>
+<p class="who">WADE</p>
+<p class="ln">My brother showed me one before he died. It’s a sacred symbol... for my people.</p>
+<p class="who">DRAKE</p>
+<p class="par">(laughing heartily)</p>
+<p class="ln">Your people!? That’s a good one! I don’t know what Homerus told you, but you’re not one of them, boy!</p>
+<p class="who">WADE</p>
+<p class="ln">My mother was. My brother was partly. And I’m partly too.</p>
+<p class="who">DRAKE</p>
+<p class="ln">Then you must die!</p>
+</div>
+  <p class="phase">Phase 2 · The duel (gameplay CP_MIS06_INGAME_2)</p>
+  <p><b>Mechanic.</b> Seamless transition (no loading screens) from the cutscene to an audio duel mode.</p>
+  <ul>
+    <li><b>[SFX_duel_jingle]</b> A distinct western jingle plays to signal the start of the duel.</li>
+    <li><b>[SFX_heartbeat_timer_loop]</b> The rhythmic heartbeat starts, acting as the global countdown. It keeps ticking rapidly, maintaining pressure.</li>
+    <li><b>Concentration phase (pattern cues).</b> The player must listen and memorise the required button combination through audio cues, in three rows that build tension: <b>[SFX_concentration_row_01]</b> first pattern; <b>[row_02]</b> second pattern, with more tension; <b>[row_03]</b> third and final pattern, the climax of focus.</li>
+    <li><b>[SFX_bell_toll]</b> The bell rings: the ultimate cue to draw.</li>
+    <li><b>Execution phase (input window).</b> The player draws the gun and must input the exact memorised combination within a strict, fixed time limit. There is no room for error.</li>
+    <li><b>Victory.</b> Inputting the correct combination within the time limit, right after the bell, triggers the final sequence.</li>
+  </ul>
+  <p class="phase">Phase 3 · The catharsis (cutscene CP_MIS06_SSC04)</p>
+  <p><b>Context.</b> The bullet hit its mark. Drake lies dead on the ground and the air is thick with dust. Wade holsters his gun, walks slowly toward the body and closes accounts with his past for good.</p>
+<div class="screenplay">
+<p class="slug">OUTDOOR – MAP_STONECIRCLE</p>
+<p class="act">Drake is hit and falls to the ground with a heavy thud.</p>
+<p class="who">DRAKE</p>
+<p class="par">(a choked, wet cough)</p>
+<p class="ln">…</p>
+<p class="sfx">SFX_footstep</p>
+<p class="act">Wade approaches his biological father’s corpse.</p>
+<p class="who">WADE</p>
+<p class="ln">Now I can call you father.</p>
+<p class="sfx">SFX_horses</p>
+<p class="act">Wade mounts his horse and rides away as the music swells into a tragic theme.</p>
+</div>
+  <div class="notes"><b>Notes</b><i>Setup and payoff:</i> Drake’s mocking question returns, reversed, as Wade’s last line. <i>Place as meaning:</i> the stone circle is sacred to Wade’s mother’s people; it gives the duel a setting with meaning and lets Wade claim an identity Drake denies him.</div>
+</article>
+</body>
+</html>

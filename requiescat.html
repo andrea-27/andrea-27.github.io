@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Requiescat · Andrea D’Angelo</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="doc.css">
+</head>
+<body>
+<div class="doc-top"><a href="samples.html">← Andrea D’Angelo · Writing samples</a></div>
+<article class="docpage">
+<p class="dk">Branching · Design document</p>
+<h1>Requiescat</h1>
+<p class="dp">Nocturama Bononia · 2021</p>
+<p class="tagline">Perhaps, for the first time, she has really been fooled.</p>
+  <div class="sec-intro"><p>A ghost hunter must decide whether to shoot a terrified ghost girl. The choice does not simply rejoin: it sets a state that the rest of the episode remembers and that, together with a second choice, decides which of three endings plays.</p></div>
+  <h3>Structure</h3>
+  <div class="dg" role="img" aria-label="Diagram: choice 1, shoot the ghost girl or not, is remembered as a state; after a fight with the Count, choice 2, use the untested cube or not. Shot and cube used gives ending 1; spared and cube used gives ending 2; cube not used gives ending 3.">
+    <div class="box mid"><b>Choice 1</b>Shoot the ghost girl?<div class="chips"><span class="chip">Shoot her</span><span class="chip">Don’t shoot her</span></div><p class="flag">Remembered as a state until the end</p></div>
+    <div class="down">↓<small>the Count attacks: a fight</small></div>
+    <div class="box mid"><b>Choice 2</b>Use the untested cube?<div class="chips"><span class="chip">Use the cube</span><span class="chip">Don’t use it</span></div></div>
+    <div class="down">↓</div>
+    <div class="row r3">
+      <div><p class="cond">If she was shot · cube</p><div class="box"><b>Ending 1 · shot, cube used</b>Clara is saved, but she does not trust Dalia: her past stays untold.</div></div>
+      <div><p class="cond">If she was spared · cube</p><div class="box"><b>Ending 2 · spared, cube used</b>Dalia sees a victim, not a monster. Clara trusts her and tells her story.</div></div>
+      <div><p class="cond">No cube</p><div class="box"><b>Ending 3 · cube not used</b>Dalia heeds the Gunsmith’s warning and makes her own body the trap.</div></div>
+    </div>
+  </div>
+  <p class="cap">A further choice during the fight (whom to attack first) changes only how the fight plays out, so it is left out of the diagram.</p>
+
+  <h3>Dalia’s voice</h3>
+  <div class="sample" id="dalia-voice">
+    <div class="sample-band">Writing sample · First-person narration · Requiescat, the opening (frames 9–18)</div>
+    <div class="sample-body dl">
+      <p class="reg">intimate and weary. Concrete objects, short breaths, a professional who has seen too much.</p>
+      <p class="plain">One letter. Just one letter. A shaky, uncertain handwriting.</p>
+      <p class="plain">It has been years since I last received a letter with which someone wanted to hire me. Years since anyone contacted me like this.</p>
+      <p class="plain">And the paper… it seemed to belong to another time…</p>
+      <p class="plain">I barely managed to read it and the paper had already turned to dust. Dust and ink stains.</p>
+      <p class="plain">But I have no doubt about what I read.</p>
+      <p class="plain">“Please help me! I’m in Villa Clara! I can’t get rid of them, they want me!”</p>
+      <p class="plain">“They say it’s my fault… please, I can’t take it anymore…”</p>
+      <p class="plain">Who can ask for help this way? Why would they send me a letter? The records say that Villa Clara has been abandoned for centuries.</p>
+      <p class="plain">This could be a trap. I’ve been hunting death for years…</p>
+      <p class="plain">…but death adapts, like any hunted species. It cheats, to survive.</p>
+      <p class="plain">No, not death, but what’s after death.</p>
+      <p class="plain">I hate what’s after death.</p>
+    </div>
+  </div>
+  <h3>From the design document</h3>
+  <div class="sec-intro"><p>The fork, and the two versions of the same frame that carry the first choice forward.</p></div>
+  <div class="pair pair-wrap">
+    <div class="sample">
+      <div class="sample-band">Writing sample · Design document · First choice</div>
+      <div class="sample-body dl">
+        <p class="fr">Frame 31</p>
+        <p class="dir">Side view. On the left, Clara, terrified of Dalia’s weapon; on the right, Dalia aims at her. Two clickable captions, and the story forks.</p>
+        <p><span class="sp">Clara:</span> No, please, wait! Please! They’re everywhere!</p>
+        <p class="go">Caption 1, “Shoot her.” Go to frame 32.</p>
+        <p class="go">Caption 2, “Don’t shoot her.” Go to frame 35.</p>
+      </div>
+    </div>
+    <div class="sample">
+      <div class="sample-band">Writing sample · Design document · Two states</div>
+      <div class="sample-body dl">
+        <p class="fr">Frame 40 · If Dalia shot</p>
+        <p class="dir">Clara, wounded by Dalia’s shot, at the centre; the Count’s henchmen appear at the back.</p>
+        <p><span class="sp">Clara:</span> Ahhh… no… no, wait… I don’t want to…</p>
+        <p class="fr">Frame 41 · If she did not</p>
+        <p class="dir">The same frame, but Clara is unharmed and terrified.</p>
+        <p><span class="sp">Clara:</span> There they are! Stop, stop…</p>
+        <p class="go">Both go on to frame 42. At the end, the first choice routes to frame 59 or 61.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Setup</h3>
+  <div class="sample" id="requiescat-setup-payoff">
+    <div class="sample-band">Writing sample · Setup · The cube and the body</div>
+    <div class="sample-body dl">
+      <p class="fr">Frame 5 · The Gunsmith, at the start</p>
+      <p><span class="sp">Gunsmith:</span> The cube is new and really powerful, but undertested. It could be very dangerous, possibly lethal.</p>
+      <p><span class="sp">Gunsmith:</span> But you know what’s after death, don’t you?</p>
+      <p class="fr">Frame 17 · Dalia, on her way to the villa</p>
+      <p><span class="sp">Dalia (caption):</span> For what’s after death we need traps. Good weapons.</p>
+      <p><span class="sp">Dalia (caption):</span> Otherwise, that scum wanders aimlessly. And the only trap to confine it is our bodies.</p>
+      <p class="note">Two warnings, early on. Both pay off only in Ending 3.</p>
+    </div>
+  </div>
+
+  <h3>The endings</h3>
+  <div class="sec-intro"><p>Endings 1 and 2 share the same frame: what changes is whether Dalia shot Clara at the start. Ending 3 is where the setup pays off.</p></div>
+  <div class="pair">
+    <div class="sample">
+      <div class="sample-band">Writing sample · Ending 1 · Shot, cube used</div>
+      <div class="sample-body dl">
+        <p class="dir">Dalia kneels beside Clara and looks at the wound she gave her.</p>
+        <p><span class="sp">Clara:</span> Thank you… nfff… I owe you a lot…</p>
+        <p><span class="sp">Dalia:</span> It’s… just a flesh wound. What you’re made of will cure it shortly.</p>
+        <p><span class="sp">Clara:</span> Don’t… go…</p>
+        <p><span class="sp">Dalia:</span> I’ll stay until dawn. Now rest.</p>
+        <p class="note">Gratitude, but no story.</p>
+      </div>
+    </div>
+    <div class="sample">
+      <div class="sample-band">Writing sample · Ending 2 · Spared, cube used</div>
+      <div class="sample-body dl">
+        <p class="dir">The same frame, with Clara standing, unharmed.</p>
+        <p><span class="sp">Clara:</span> I remember those people around me, then nothing… then they stayed here, in the Villa. They died in my house…</p>
+        <p><span class="sp">Clara:</span> They only wanted me, even afterwards… they said it was my fault…</p>
+        <p><span class="sp">Dalia:</span> It’s okay. It’s over.</p>
+        <p><span class="sp">Clara:</span> Please don’t go…</p>
+        <p class="note">Trust earned: Clara tells her story.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sample">
+    <div class="sample-band">Writing sample · Ending 3 · No cube: the payoff</div>
+    <div class="sample-body dl">
+      <p class="fr">Frames 63–72</p>
+      <p><span class="sp">Dalia (caption):</span> I can’t… but that girl hired me…</p>
+      <p><span class="sp">Dalia (caption):</span> When you don’t have any tricks left against that scum…</p>
+      <p><span class="sp">Dalia (caption):</span> …only one trap remains. Our body.</p>
+      <p class="dir">Dalia runs herself through with her staff, and the Count with her. Then, a close-up: we begin to glimpse her ghost form.</p>
+      <p><span class="sp">Clara:</span> Thanks…</p>
+      <p><span class="sp">Dalia (caption):</span> Now the girl can rest peacefully.</p>
+      <p><span class="sp">Dalia (caption):</span> And I with her, here at Villa Clara.</p>
+      <p class="note">The Gunsmith’s warning makes refusing the cube a real choice; Dalia’s rule about traps becomes her sacrifice.</p>
+    </div>
+  </div>
+
+  <h3>In the released game</h3>
+  <div class="figs c3 keep">
+    <figure><img src="img/noc_gate1.jpg" width="1400" height="788" alt="Frame 18: Dalia at the villa gate."><figcaption>Frame 18 · <b>Dalia:</b> I hate what’s after death.</figcaption></figure>
+    <figure><img src="img/noc_cross.jpg" width="1400" height="788" alt="Frame 30: Dalia close-up, glowing pistols."><figcaption>Frame 30 · <b>Dalia:</b> Never trust the after-death shit.</figcaption></figure>
+    <figure><img src="img/noc_choice.jpg" width="1400" height="788" alt="Frame 31: Clara and Dalia, with the two captions Shoot her and Don’t shoot her."><figcaption>Frame 31 · the first choice</figcaption></figure>
+  </div>
+</article>
+</body>
+</html>

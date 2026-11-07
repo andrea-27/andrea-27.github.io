@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Two Soloists · Andrea D’Angelo</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="doc.css">
+</head>
+<body>
+<div class="doc-top"><a href="samples.html">← Andrea D’Angelo · Writing samples</a></div>
+<article class="docpage">
+<p class="dk">Structure · In-game text · Design document</p>
+<h1>Two Soloists</h1>
+<p class="dp">Nocturama Bononia · 2021</p>
+<p class="tagline">A promising pianist, a ruthless killer. Two soloists.</p>
+
+  <div class="sec-intro"><p class="lead">A pianist plays the most important concert of his life. At every passage, a flashback shows a murder in the past. Why the two are linked is revealed only at the end.</p></div>
+  <h3>Structure</h3>
+
+  <div class="dg" role="img" aria-label="Diagram: four passages, each now and then: Carlo plays three keys with a hidden timer; in time, the murder in the past is carried out; missed, it is not. Two or more passages in time lead to the Faust ending, fewer to The Hatchet Job. Only at the end do the demon and the pact appear: the ending explains the beginning.">
+    <div class="loop">
+      <p class="loop-t">↺ Only at the end: the demon and the pact.</p>
+      <div class="row r4">
+        <div class="pass"><div class="box"><b>Now · passage 1</b>Carlo gathers himself; three keys, hidden timer</div><div class="io"><span>↑ in time</span><span>missed ⇡</span></div><div class="box tint"><b>Then · murder 1</b>carried out, or not</div></div>
+        <div class="pass"><div class="box"><b>Now · passage 2</b>Carlo gathers himself; three keys, hidden timer</div><div class="io"><span>↑ in time</span><span>missed ⇡</span></div><div class="box tint"><b>Then · murder 2</b>carried out, or not</div></div>
+        <div class="pass"><div class="box"><b>Now · passage 3</b>Carlo gathers himself; three keys, hidden timer</div><div class="io"><span>↑ in time</span><span>missed ⇡</span></div><div class="box tint"><b>Then · murder 3</b>carried out, or not</div></div>
+        <div class="pass"><div class="box"><b>Now · passage 4</b>Carlo gathers himself; three keys, hidden timer</div><div class="io"><span>↑ in time</span><span>missed ⇡</span></div><div class="box tint"><b>Then · last victim</b>carried out, or not</div></div>
+      </div>
+      <div class="down">↓</div>
+      <div class="box tint mid"><b>Tally of passages played in time</b>two or more?</div>
+      <div class="down">↓</div>
+      <div class="row r2 stack">
+        <div class="box"><b>Two or more · Faust ending</b>the pact with the devil is fulfilled</div>
+        <div class="box"><b>Fewer than two · The Hatchet Job</b>the critics tear the concert apart</div>
+      </div>
+    </div>
+  </div>
+  <p class="cap">In time: the music flows and the murder in the past is carried out. Missed: the chord breaks, and the killer did not have the courage.</p>
+
+  <div class="sec-intro">
+  </div>
+  <h3>How it plays</h3>
+  <div class="sec-intro">
+    <ul class="ticks">
+      <li>Four passages. Before each one, a frame of Carlo gathering himself, concentrating, wanting to get it right.</li>
+      <li>Then a keyboard frame: the player physically presses three keys within a hidden time limit.</li>
+      <li>All three in time: the music goes on correctly, and a flashback shows a murder carried out. Some or none: a murder that never happened. The cause sits in the past, the effect in the present.</li>
+      <li>Two or more passages in time lead to the Faust ending, where the pact with the devil is fulfilled. Fewer lead to the Hatchet Job ending: the critics tear the concert apart.</li>
+    </ul>
+    <div class="approach tint"><b>Why it works.</b> The player thinks he is deciding whether to play. Each flashback shows what that decision cost in the past, but not why. The demon appears only at the end, and closes the circle: Carlo plays well because he killed, and he killed in order to play well.</div>
+  </div>
+
+  <h3>In-game text</h3>
+  <div class="sample" id="two-soloists-text">
+    <div class="sample-band">Writing sample · In-game text</div>
+    <div class="sample-body dl">
+      <p class="fr">Before the passages · Captions</p>
+      <p><span class="sp">Carlo (caption):</span> Breathe. Are you afraid? No.</p>
+      <p><span class="sp">Carlo (caption):</span> Let the flow come out of your hands naturally.</p>
+      <p><span class="sp">Carlo (caption):</span> You can play. Or not…</p>
+      <p class="dir">The refrain returns before every passage, and frays as the night goes on: “You can… play. Or… not…”</p>
+      <p class="fr">Faust ending</p>
+      <p><span class="sp">Demon:</span> And so, among the stone faces of Palazzo Tartagni, you found me. A face hidden among faces.</p>
+      <p><span class="sp">Demon:</span> You kept your deal. You will get what you ask for.</p>
+      <p><span class="sp">Demon:</span> Without a doubt, my greatest performance.</p>
+      <p class="fr">The Hatchet Job</p>
+      <p><span class="sp">Critic:</span> Poor performance. Very, very bad.</p>
+      <p><span class="sp">Carlo (caption):</span> And that’s how I got panned by critics. I’ll never play the piano again.</p>
+      <p class="note">In the Faust ending the last word goes to the demon: the performance was his all along.</p>
+    </div>
+  </div>
+
+  <h3>From design document to game</h3>
+  <div class="pair">
+    <div class="sample">
+      <div class="sample-band">Writing sample · Original design document</div>
+      <div class="sample-body dl">
+        <p class="fr">Frame 13 · Choice 1</p>
+        <p class="dir">The player chooses LEFT HAND (right) or RIGHT HAND (wrong).</p>
+        <p><span class="sp">Carlo (caption):</span> And now the left hand.</p>
+        <p class="go">Right: go to frame 14. Wrong: go to frame 18.</p>
+        <p class="note">In the design document, four binary choices: right or wrong.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h4>What changed, and why</h4>
+      <p>The team wanted the music to carry more of the story. Once we had checked that the student team could build it, we decided together to replace the binary choices with a keyboard the player actually plays.</p>
+      <p>The logic of the design document stayed: playing well still means a murder was committed.</p>
+    </div>
+  </div>
+</article>
+</body>
+</html>
