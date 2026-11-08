@@ -152,6 +152,10 @@ h2 em, h1 em { color: var(--accent); font-style: normal; }
 
 .contact { padding-block: 3rem 1rem; border-top: 1px solid var(--rule); }
 .addr { user-select: all; font-weight: 500; }
+.contact-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2.4rem; align-items: center; }
+.contact .avatar { order: -1; }
+.contact .avatar { width: 170px; height: auto; display: block; }
+@media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } .contact .avatar { width: 120px; } }
 .nav nav a[aria-current="page"] { color: var(--ink); box-shadow: inset 0 -2px 0 var(--rose); }
 .foot { border-top: 1px solid var(--rule); margin-top: 2rem; padding-block: 1.4rem 0; font-size: .92rem; color: var(--muted); }
 .foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; }
@@ -164,15 +168,15 @@ h2 em, h1 em { color: var(--accent); font-style: normal; }
 </head>
 <body>
 <header class="nav"><div class="wrap"><a class="name" href="index.html">Andrea D’Angelo</a>
-  <nav aria-label="Pages"><a href="index.html" aria-current="page">About</a><a href="projects.html">Projects</a><a href="samples.html">Samples</a><a href="faq.html">FAQ</a><a href="index.html#contact">Contact</a></nav></div></header>
+  <nav aria-label="Pages"><a href="index.html" aria-current="page">About</a><a href="projects.html">Projects</a><a href="samples.html">Samples</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav></div></header>
 
 <main class="wrap">
   <section class="about" id="hello">
     <div>
       <h1>Hello there! I’m <em>Andrea</em>, a narrative designer and writer.</h1>
       <p>As a kid I wanted to be Jim Hawkins, Batman, a Jedi, a DigiDestined… When I grew up, the only thing left was to write stories.</p>
-      <p>I build stories, characters and worlds across media. I trained as a comic book writer and screenwriter before coming to games as a narrative designer. I started with audiogames, fully accessible to blind and visually impaired players, and then moved on to videogames.</p>
-      <p>My work doesn’t stop at the documents. I work directly in the engine and with in-house tools, I team up with programmers on the narrative tools a project needs, and I work closely with level designers on environmental storytelling. As a project manager I have also supported directors and producers, so I’m used to talking with every department and keeping the work focused on the tasks that matter. I also pitch projects: A Western Drama won the Incredibol call, and I have presented Nocturama Bononia at industry events in Bologna and Hell Galaxy at Comicon Napoli.</p>
+      <p>I build stories, characters and worlds across media. I trained as a comic book writer and screenwriter, then came to games as a narrative designer: first audiogames, fully accessible to blind and visually impaired players, then videogames.</p>
+      <p>My work doesn’t stop at the documents: I work in the engine and with in-house tools, with programmers on the narrative tools a project needs, and with level designers on environmental storytelling. On some projects I have also supported directors and producers as a project manager. I also pitch projects: A Western Drama won Incredibol, the City of Bologna’s grant for creative projects, and I have presented Nocturama Bononia at industry events in Bologna and Hell Galaxy at Comicon Napoli.</p>
       <p>What I enjoy most about this job is the teamwork. I don’t write alone in a room: I like being changed by people who know things I don’t, and finding creative ways around the obstacles of a long project.</p>
       <div class="btns">
         <a class="btn solid" href="samples.html">Read my writing</a>
@@ -187,7 +191,7 @@ h2 em, h1 em { color: var(--accent); font-style: normal; }
   <section class="think" id="think">
     <p class="k">How I think</p>
     <h2>A story that <em>fits the game</em>.</h2>
-    <p class="intro">I give games a story that fits them: shaped by gameplay, platform and production, and delivered through every channel the player meets. I can follow that story through every stage, from the pitch and the story outline to cutscene scripts, quests, dialogue and the narrative design inside the game.</p>
+    <p class="intro">I give games a story that fits them: shaped by gameplay, platform and production, and delivered through every channel the player meets. I have worked on every stage of that story, from the pitch and the story outline to cutscene scripts, quests, dialogue and the narrative design inside the game.</p>
     <div class="principles">
       <div><b>Know the game</b><span>Its gameplay, its platform, its production, and what the director needs from the story.</span></div>
       <div><b>Weave story and play together</b><span>Worldbuilding, characters, quests, dialogue and environments woven into what the player does, together with game and level designers.</span></div>
@@ -196,13 +200,6 @@ h2 em, h1 em { color: var(--accent); font-style: normal; }
     </div>
   </section>
 
-  <section class="contact" id="contact">
-    <p class="k">Contact</p>
-    <h2>Let’s <em>talk</em>.</h2>
-    <p>Based in Bologna, Italy. Open to full-time narrative design roles, on site or remote.</p>
-    <p><span class="addr">andrea.dangelo27@gmail.com</span></p>
-    <div class="btns" style="margin-top:.4rem"><a class="btn solid" href="mailto:andrea.dangelo27@gmail.com">Email me</a><a class="btn" href="https://www.linkedin.com/in/andrea-d-angelo27/" rel="noopener">LinkedIn</a><a class="btn ghost" href="files/Andrea_DAngelo_Portfolio.pdf">PDF portfolio ↓</a></div>
-  </section>
 </main>
 </body>
 </html>
